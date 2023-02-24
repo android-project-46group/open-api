@@ -86,6 +86,31 @@ paths:
           description: internal server error
       tags:
         - developers
+  /members/download:
+    get:
+      summary: download members
+      operationId: downloadMembers
+      description: |
+        ## By passing the appropriate query parameter, you can download information about members as a zip format.
+      parameters:
+        - in: query
+          name: key
+          description: API key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: zip data
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+        '500':
+          description: internal server error
+      tags:
+        - developers
   /blogs:
     get:
       summary: searches blogs
